@@ -21,4 +21,7 @@
 
     <!-- fragment_order -->
     <string name="view_menu">Menu</string>
+    <string name="month">Month</string>
+    <string name="profits">Profits</string>
+    <string name="calculate">Calculate</string>
 </resources>
