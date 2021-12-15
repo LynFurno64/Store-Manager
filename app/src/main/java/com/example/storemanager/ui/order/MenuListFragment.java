@@ -22,9 +22,8 @@ import com.example.storemanager.database.MenuLab;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MenuListFragment extends Fragment implements MenuAdapter.ItemClickListener {
+public class MenuListFragment extends Fragment {
 
-    private MenuAdapter mAdapter;
     private RecyclerView mMenuRecyclerView;
     private MealAdapter mAdapters;
 
@@ -47,10 +46,6 @@ public class MenuListFragment extends Fragment implements MenuAdapter.ItemClickL
         return view;
     }
 
-    @Override
-    public void onItemClick(View view, int position) {
-        Toast.makeText(getActivity(), "You clicked " + mAdapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
-    }// onItemClick
 
     private void updateUI() {
         MenuLab menuLab = MenuLab.get(getActivity());

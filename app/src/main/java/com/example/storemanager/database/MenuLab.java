@@ -20,6 +20,7 @@ public class MenuLab {
     private MenuLab(Context context) {
         mMenu = new ArrayList<>();
 
+
         for (int i = 0; i < 100; i++) {
             Meal dish = new Meal();
             dish.setMeal("Meal #"+i);

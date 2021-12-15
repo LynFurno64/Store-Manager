@@ -13,6 +13,7 @@
     <string name="menu_stats">Statistics</string>
     <string name="menu_foodList">Menu List</string>
 
+    <!-- fragment_add_meal -->
     <string name="prompt_food">Meal</string>
     <string name="prompt_price">$0.00</string>
 
@@ -21,7 +22,23 @@
 
     <!-- fragment_order -->
     <string name="view_menu">Menu</string>
-    <string name="month">Month</string>
+    <string name="popular_text">Popular</string>
+
+
+    <!-- cart_fragment -->
+    <string name="cartTitle">Customer Cart</string>
+    <string name="itemTotal">Total</string>
+    <string name="outBtn">Checkout</string>
+
+    <!-- fragment_show_food_details -->
+    <string name="addBth">+</string>
+    <string name="takeBtn">-</string>
+    <string name="discript">Description</string>
+    <string name="addCart">Add to Cart</string>
+
     <string name="profits">Profits</string>
+    <string name="month">Month</string>
     <string name="calculate">Calculate</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Title</string>
 </resources>
