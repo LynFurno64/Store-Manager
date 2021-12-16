@@ -23,7 +23,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editTextNumber"
+            android:id="@+id/TextNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="82dp"
@@ -43,7 +43,7 @@
             android:layout_marginTop="87dp"
             android:layout_marginBottom="480dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/editTextNumber"
+            app:layout_constraintEnd_toStartOf="@+id/TextNumber"
             app:layout_constraintHorizontal_bias="0.325"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
@@ -55,7 +55,7 @@
             android:layout_marginTop="50dp"
             android:layout_marginBottom="12dp"
             android:text="@string/profits"
-            app:layout_constraintBottom_toTopOf="@+id/editTextNumber"
+            app:layout_constraintBottom_toTopOf="@+id/TextNumber"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.542"
             app:layout_constraintStart_toStartOf="parent"

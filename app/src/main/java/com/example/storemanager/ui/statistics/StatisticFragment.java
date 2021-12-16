@@ -6,7 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -18,9 +20,10 @@ import java.util.List;
 
 public class StatisticFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
+    int profit;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -57,6 +60,16 @@ public class StatisticFragment extends Fragment implements AdapterView.OnItemSel
         // attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
 
+
+        Button button = view.findViewById(R.id.button);
+        TextView textView = view.findViewById(R.id.TextNumber);
+
+        button.setOnClickListener(v -> {
+
+
+           // textView.setText();
+        });
+
         return view;
     }
     @Override
@@ -70,5 +83,4 @@ public class StatisticFragment extends Fragment implements AdapterView.OnItemSel
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub
     }
-
 }
