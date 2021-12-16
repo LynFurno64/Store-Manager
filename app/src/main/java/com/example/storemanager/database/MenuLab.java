@@ -19,11 +19,9 @@ public class MenuLab {
 
     private MenuLab(Context context) {
         mMenu = new ArrayList<>();
-
-
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             Meal dish = new Meal();
-            dish.setMeal("Meal #"+i);
+            dish.setName("Meal #"+i);
             dish.setPrice(1.75 + i);
             mMenu.add(dish);
         }
@@ -35,7 +33,7 @@ public class MenuLab {
 
     public Meal getMeals(UUID id) {
         for (Meal food : mMenu) {
-            if (food.getmId().equals(id)) {
+            if (food.getId().equals(id)) {
                 return food;
             }
         }

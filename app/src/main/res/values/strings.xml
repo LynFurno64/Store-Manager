@@ -6,12 +6,16 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <!-- cardview_menu_row -->
+    <string name="titleMeal">Meal Title</string>
+    <string name="priceMeal">Meal Price</string>
 
     <!-- mobile_navigation -->
     <string name="menu_addMeal">Add Meals</string>
     <string name="menu_orders">Orders</string>
     <string name="menu_stats">Statistics</string>
     <string name="menu_foodList">Menu List</string>
+    <string name="menu_foodDetails">About Food</string>
 
     <!-- fragment_add_meal -->
     <string name="prompt_food">Meal</string>

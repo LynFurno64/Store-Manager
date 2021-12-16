@@ -1,6 +1,7 @@
 package com.example.storemanager.ui.order;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,10 +24,10 @@ import com.example.storemanager.databinding.FragmentOrderBinding;
 import java.util.List;
 
 public class OrdersFragment extends Fragment {
+    private static final String TAG = "OrdersFragments";
     FragmentOrderBinding binding;
     private RecyclerView mMenuRecyclerView;
     private DishAdapter mAdapter;
-    private List<Meal> mMenu;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -81,17 +82,44 @@ public class OrdersFragment extends Fragment {
     //---------------stores and recycles views as they are scrolled off screen--------------------\\
     //--------------------------------------------------------------------------------------------\\
     private class MealsHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView myTextView;
+        private Meal mMeal;
+        private TextView mTextViewTitle;
+        private TextView mTextViewPrice;
 
         public MealsHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.cardview_menu_row, parent, false));
-
-            myTextView = itemView.findViewById(R.id.tvMealsPrice);
             itemView.setOnClickListener(this);
+            mTextViewTitle = itemView.findViewById(R.id.tv_meal_title);
+            mTextViewPrice = itemView.findViewById(R.id.tv_meal_price);
         }
+
+        //This will be called each time a new Meal is displayed in your CrimeHolder
+        //When given a Meal, MealHolder will now update the title TextView and price TextView to reflect the
+        //state of the Meal.
+        public void bind(Meal meal){
+            mMeal = meal;
+            mTextViewTitle.setText(mMeal.getName());
+            mTextViewPrice.setText(String.valueOf(mMeal.getPrice()));
+        }// bind
 
         @Override
         public void onClick(View view) {
+            String dish_name = mMeal.getName();
+
+            Log.i(TAG, "MyClass.getView() — get item number " + dish_name);
+            Toast.makeText(getActivity(),
+                    dish_name + " clicked!", Toast.LENGTH_SHORT).show();
+
+            Bundle bundle = new Bundle();
+            bundle.putString("meal_ID", String.valueOf(mMeal.getId())); // Put anything what you want
+
+            Fragment showDetails = new ShowFoodDetailsFragment();
+            showDetails.setArguments(bundle);
+            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.nav_host_fragment_content_nav, showDetails)
+                    .addToBackStack(null)
+                    .commit();
         }
     }// MealsHolder
 
@@ -99,6 +127,8 @@ public class OrdersFragment extends Fragment {
     //--------------------------------------------------------------------------------------------\\
     //--------------------------------------------------------------------------------------------\\
     private class DishAdapter extends RecyclerView.Adapter<MealsHolder> {
+        private List<Meal> mMenu;
+
         public DishAdapter(List<Meal> meals) {
             mMenu = meals;
         }
@@ -114,8 +144,7 @@ public class OrdersFragment extends Fragment {
         @Override
         public void onBindViewHolder(MealsHolder holder, int position) {
             Meal meals = mMenu.get(position);
-            String mes = meals.getMeal() + " and " + meals.getPrice();
-            holder.myTextView.setText(mes);
+            holder.bind(meals);
         }
 
         @Override

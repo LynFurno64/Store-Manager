@@ -1,17 +1,12 @@
 package com.example.storemanager.ui.order;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentResultListener;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,7 +14,6 @@ import com.example.storemanager.R;
 import com.example.storemanager.database.Meal;
 import com.example.storemanager.database.MenuLab;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MenuListFragment extends Fragment {
@@ -62,7 +56,7 @@ public class MenuListFragment extends Fragment {
         public FoodHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.cardview_menu_row, parent, false));
 
-            myTextView = itemView.findViewById(R.id.tvMealsPrice);
+            myTextView = itemView.findViewById(R.id.tv_meal_title);
             itemView.setOnClickListener(this);
         }
 
@@ -90,7 +84,7 @@ public class MenuListFragment extends Fragment {
         @Override
         public void onBindViewHolder(FoodHolder holder, int position) {
             Meal meals = mMenu.get(position);
-            String mes = meals.getMeal() + " and " + meals.getPrice();
+            String mes = meals.getName() + " and " + meals.getPrice();
             holder.myTextView.setText(mes);
         }
 

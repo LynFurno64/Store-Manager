@@ -26,4 +26,13 @@
         android:name="com.example.storemanager.ui.order.MenuListFragment"
         android:label="@string/menu_foodList"
         tools:layout="@layout/cardview_menu_list"/>
+    <fragment
+        android:id="@+id/nav_food_details"
+        android:name="com.example.storemanager.ui.order.ShowFoodDetailsFragment"
+        android:label="@string/menu_foodDetails"
+        tools:layout="@layout/fragment_show_food_details"/>
+    <fragment
+        android:id="@+id/nav_cart"
+        android:name="com.example.storemanager.ui.order.CartFragment"
+        tools:layout="@layout/cart_fragment"/>
 </navigation>

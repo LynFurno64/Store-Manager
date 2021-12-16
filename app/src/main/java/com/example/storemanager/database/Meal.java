@@ -3,26 +3,26 @@ package com.example.storemanager.database;
 import java.util.UUID;
 
 public class Meal {
-    private UUID mId;
-    public String meal;
+    private UUID id;
+    public String name;
     public double price;
     public int timesOrder;
 
     public Meal() {
-        mId = UUID.randomUUID();
+        id = UUID.randomUUID();
     }
 
-    public UUID getmId() {
-        return mId;
+    public UUID getId() {
+        return id;
     }
 
 
-    public String getMeal() {
-        return meal;
+    public String getName() {
+        return name;
     }
 
-    public void setMeal(String meal) {
-        this.meal = meal;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public double getPrice() {

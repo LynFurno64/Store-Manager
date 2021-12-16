@@ -41,7 +41,7 @@ public class AddMealFragment extends Fragment {
             public void onClick(View v) {
                 String message = "Meal is: "+ mDishName.getText() + " and " + mPrice.getText();
                 Toast.makeText(getActivity(),"New Meal: " + message,Toast.LENGTH_LONG).show();
-                newMeal.setMeal(String.valueOf(mDishName.getText())); // Meal Name
+                newMeal.setName(String.valueOf(mDishName.getText())); // Meal Name
                 newMeal.setPrice(Double.parseDouble(String.valueOf(mPrice.getText()))); // Meal Price
             }
         });

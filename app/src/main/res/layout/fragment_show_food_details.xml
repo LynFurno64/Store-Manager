@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.order.ShowFoodDetailsFragment">
+    tools:context=".ui.order.ShowFoodDetailsFragment"
+    android:background="#FBFAFA">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
@@ -49,11 +50,11 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/takeBtn"
+                    android:id="@+id/minusBtn"
                     android:layout_width="48dp"
                     android:layout_height="wrap_content"
                     android:text="@string/takeBtn" />
@@ -62,15 +63,15 @@
                     android:id="@+id/text_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:text="1"
                     android:textAlignment="center"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginStart="16dp"/>
+                    android:textStyle="bold" />
 
                 <Button
-                    android:id="@+id/addBtn"
+                    android:id="@+id/plusBtn"
                     android:layout_width="48dp"
                     android:layout_height="wrap_content"
                     android:text="@string/addBth" />
@@ -80,12 +81,27 @@
             <TextView
                 android:id="@+id/decription"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginTop="16dp"
                 android:layout_weight="1"
                 android:text="@string/discript"
                 android:textSize="16sp"
                 android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/leave_alone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:gravity="top"
+                android:maxLength="4096"
+                android:maxLines="6"
+                android:minLines="6"
+                android:padding="10dip"
+                android:scrollbars="vertical"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:typeface="monospace"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <Button
                 android:id="@+id/addCartBtn"
