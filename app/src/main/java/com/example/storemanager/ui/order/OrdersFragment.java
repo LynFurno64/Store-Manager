@@ -68,8 +68,13 @@ public class OrdersFragment extends Fragment {
     private void updateUI() {
         MenuLab menuLab = MenuLab.get(getActivity());
         List<Meal> dishes = menuLab.getMenu();
-        mAdapter = new DishAdapter(dishes);
-        mMenuRecyclerView.setAdapter(mAdapter);
+
+        if (mAdapter == null) {
+            mAdapter = new DishAdapter(dishes);
+            mMenuRecyclerView.setAdapter(mAdapter);
+        } else {
+            mAdapter.notifyDataSetChanged();
+        }
     }// updateUI
 
     // To prevent memory leak
@@ -77,6 +82,12 @@ public class OrdersFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateUI();
     }
 
     //---------------stores and recycles views as they are scrolled off screen--------------------\\

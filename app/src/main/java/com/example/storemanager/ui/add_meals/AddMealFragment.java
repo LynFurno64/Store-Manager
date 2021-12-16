@@ -13,13 +13,11 @@ import androidx.fragment.app.Fragment;
 import com.example.storemanager.R;
 import com.example.storemanager.database.Meal;
 import com.example.storemanager.databinding.FragmentAddMealBinding;
+import com.example.storemanager.databinding.FragmentOrderBinding;
 
 public class AddMealFragment extends Fragment {
     FragmentAddMealBinding binding;
     private Meal newMeal;
-    private Button mSendBtn;
-    private EditText mPrice;
-    private EditText mDishName;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,24 +28,18 @@ public class AddMealFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_add_meal, container, false);
-
-        mDishName = view.findViewById(R.id.dish_name);
-        mPrice = view.findViewById(R.id.price);
+        binding = FragmentAddMealBinding.inflate(getLayoutInflater());
 
         //Button Click Saves meal
-        mSendBtn = view.findViewById(R.id.sendBtn);
-        mSendBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                String message = "Meal is: "+ mDishName.getText() + " and " + mPrice.getText();
+        binding.sendBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String message = "Meal is: "+ binding.dishName.getText() + " and " + binding.price.getText();
                 Toast.makeText(getActivity(),"New Meal: " + message,Toast.LENGTH_LONG).show();
-                newMeal.setName(String.valueOf(mDishName.getText())); // Meal Name
-                newMeal.setPrice(Double.parseDouble(String.valueOf(mPrice.getText()))); // Meal Price
+                newMeal.setName(String.valueOf(binding.dishName.getText())); // Meal Name
+                newMeal.setPrice(Double.parseDouble(String.valueOf(binding.price.getText()))); // Meal Price
             }
         });
-
-        return view;
+        return binding.getRoot();
     }
-
-    private void addMealBtn(){}//addMealBtn
 }

@@ -26,10 +26,7 @@ public class ShowFoodDetailsFragment extends Fragment {
     private static final String ARG_MEAL_ID = "meal_id";
 
     private Meal mMeal;
-    private TextView mealTitle, mealPrice;
     private int amount;
-    private Button addToCart;
-    private Button addItem, dropItem;
     FragmentShowFoodDetailsBinding binding;
 
     public ShowFoodDetailsFragment() {
@@ -48,11 +45,7 @@ public class ShowFoodDetailsFragment extends Fragment {
         binding = FragmentShowFoodDetailsBinding.inflate(getLayoutInflater());
         amount = Integer.parseInt(String.valueOf(binding.textAmount.getText())); // Setting Amount
 
-        //binding.mealTitle.setText(mMeal.getName());
-        //binding.mealPrice.setText(String.valueOf(mMeal.getPrice()));
-
         // Retrieve Bundle
-
         Bundle bundle = this.getArguments();
         if(bundle != null){
             UUID dishId = UUID.fromString((String) bundle.get("meal_ID"));
@@ -92,5 +85,12 @@ public class ShowFoodDetailsFragment extends Fragment {
 
             }
         });
+    }
+
+    // To prevent memory leak
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }
