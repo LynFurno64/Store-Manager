@@ -16,5 +16,9 @@
             android:id="@+id/nav_stats"
             android:icon="@drawable/icon_trend"
             android:title="@string/menu_stats" />
+        <item
+            android:id="@+id/nav_funds"
+            android:icon="@android:drawable/ic_input_add"
+            android:title="@string/add_funds" />
     </group>
 </menu>

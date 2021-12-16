@@ -45,4 +45,8 @@
     <string name="calculate">Calculate</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Title</string>
+    <string name="Date">Date</string>
+    <string name="spendings">Spendings</string>
+    <string name="save">Save</string>
+    <string name="add_funds">Add Funds</string>
 </resources>

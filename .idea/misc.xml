@@ -8,7 +8,7 @@
         <entry key="..\:/Users/chesh/Programming Projects/AndroidStudioProjects/StoreManager/app/src/main/res/layout/app_bar_nav.xml" value="0.12681159420289856" />
         <entry key="..\:/Users/chesh/Programming Projects/AndroidStudioProjects/StoreManager/app/src/main/res/layout/cardview_menu.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/chesh/Programming Projects/AndroidStudioProjects/StoreManager/app/src/main/res/layout/cardview_menu_list.xml" value="0.13333333333333333" />
-        <entry key="..\:/Users/chesh/Programming Projects/AndroidStudioProjects/StoreManager/app/src/main/res/layout/cardview_menu_row.xml" value="0.33" />
+        <entry key="..\:/Users/chesh/Programming Projects/AndroidStudioProjects/StoreManager/app/src/main/res/layout/cardview_menu_row.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/chesh/Programming Projects/AndroidStudioProjects/StoreManager/app/src/main/res/layout/cart_fragment.xml" value="0.33" />
         <entry key="..\:/Users/chesh/Programming Projects/AndroidStudioProjects/StoreManager/app/src/main/res/layout/content_nav.xml" value="0.2" />
         <entry key="..\:/Users/chesh/Programming Projects/AndroidStudioProjects/StoreManager/app/src/main/res/layout/fragment_add_meal.xml" value="0.25" />
@@ -21,7 +21,12 @@
         <entry key="..\:/Users/chesh/Programming Projects/AndroidStudioProjects/StoreManager/app/src/main/res/layout/nav_header_nav.xml" value="0.2" />
         <entry key="..\:/Users/chesh/Programming Projects/AndroidStudioProjects/StoreManager/app/src/main/res/menu/activity_nav_drawer.xml" value="0.5" />
         <entry key="..\:/Users/chesh/Programming Projects/AndroidStudioProjects/StoreManager/app/src/main/res/menu/nav.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/mesha/AndroidStudioProjects/Store-Manager/app/src/main/res/layout/fragment_add_meal.xml" value="0.1" />
+        <entry key="..\:/Users/mesha/AndroidStudioProjects/Store-Manager/app/src/main/res/layout/fragment_funds.xml" value="0.24909420289855072" />
+        <entry key="..\:/Users/mesha/AndroidStudioProjects/Store-Manager/app/src/main/res/layout/fragment_order.xml" value="0.24909420289855072" />
         <entry key="..\:/Users/mesha/AndroidStudioProjects/Store-Manager/app/src/main/res/layout/fragment_statistics.xml" value="0.25" />
+        <entry key="..\:/Users/mesha/AndroidStudioProjects/Store-Manager/app/src/main/res/menu/activity_nav_drawer.xml" value="0.25" />
+        <entry key="..\:/Users/mesha/AndroidStudioProjects/Store-Manager/app/src/main/res/menu/nav.xml" value="0.25" />
       </map>
     </option>
   </component>
@@ -30,5 +35,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.1" />
+      </ProjectState>
+    </option>
   </component>
 </project>
