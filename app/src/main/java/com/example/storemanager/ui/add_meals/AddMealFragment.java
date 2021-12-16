@@ -18,6 +18,8 @@ import com.example.storemanager.databinding.FragmentOrderBinding;
 public class AddMealFragment extends Fragment {
     FragmentAddMealBinding binding;
     private Meal newMeal;
+    private String dish;
+    private String price;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,15 +31,21 @@ public class AddMealFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentAddMealBinding.inflate(getLayoutInflater());
+        dish = String.valueOf(binding.dishName.getText());
+        price = String.valueOf(binding.price.getText());
 
         //Button Click Saves meal
         binding.sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String message = "Meal is: "+ binding.dishName.getText() + " and " + binding.price.getText();
-                Toast.makeText(getActivity(),"New Meal: " + message,Toast.LENGTH_LONG).show();
-                newMeal.setName(String.valueOf(binding.dishName.getText())); // Meal Name
-                newMeal.setPrice(Double.parseDouble(String.valueOf(binding.price.getText()))); // Meal Price
+                if (dish.isEmpty() || price.isEmpty()){
+                    Toast.makeText(getActivity(),"Complete Forum",Toast.LENGTH_LONG).show();
+                }
+                else{
+                    Toast.makeText(getActivity(),"SAVED",Toast.LENGTH_LONG).show();
+                    newMeal.setName(dish); // Meal Name
+                    newMeal.setPrice(Double.parseDouble(price)); // Meal Price
+                }
             }
         });
         return binding.getRoot();
