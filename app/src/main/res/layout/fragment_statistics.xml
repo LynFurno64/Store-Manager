@@ -29,6 +29,8 @@
             android:layout_width="344dp"
             android:layout_height="48dp"
             android:layout_marginBottom="376dp"
+            android:autofillHints=""
+            android:clickable="false"
             android:ems="10"
             android:hint="@string/profits"
             android:inputType="number"
@@ -36,8 +38,7 @@
             android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:autofillHints="" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Spinner
             android:id="@+id/spinner"
