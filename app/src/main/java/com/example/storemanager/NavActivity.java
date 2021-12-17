@@ -16,10 +16,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.storemanager.databinding.ActivityNavBinding;
 
-public class NavActivity extends AppCompatActivity {
+public class NavActivity extends AppCompatActivity implements MyDrawerControl {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityNavBinding binding;
+    DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,8 @@ public class NavActivity extends AppCompatActivity {
 
         binding = ActivityNavBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        drawer = findViewById(R.id.drawer_layout);
 
         setSupportActionBar(binding.appBarNav.toolbar);
         binding.appBarNav.fab.setOnClickListener(new View.OnClickListener() {
@@ -42,7 +45,7 @@ public class NavActivity extends AppCompatActivity {
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_orders, R.id.nav_addFoods, R.id.nav_stats,R.id.nav_funds, R.id.nav_cart)
-                .setOpenableLayout(drawer)
+                .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_nav);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
@@ -61,5 +64,17 @@ public class NavActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_nav);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    @Override
+    public void setDrawer_lock() {
+        // Lock Drawer
+        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+    }
+
+    @Override
+    public void setDrawer_unlock() {
+        // Unlock Drawer
+        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
     }
 }

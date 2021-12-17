@@ -31,13 +31,14 @@ public class AddMealFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentAddMealBinding.inflate(getLayoutInflater());
-        dish = String.valueOf(binding.dishName.getText());
-        price = String.valueOf(binding.price.getText());
+
 
         //Button Click Saves meal
         binding.sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                dish = String.valueOf(binding.dishName.getText());
+                price = String.valueOf(binding.price.getText());
                 if (dish.isEmpty() || price.isEmpty()){
                     Toast.makeText(getActivity(),"Complete Forum",Toast.LENGTH_LONG).show();
                 }

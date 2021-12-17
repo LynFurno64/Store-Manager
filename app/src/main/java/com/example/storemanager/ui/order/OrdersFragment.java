@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.storemanager.NavActivity;
 import com.example.storemanager.R;
 import com.example.storemanager.database.Meal;
 import com.example.storemanager.database.MenuLab;

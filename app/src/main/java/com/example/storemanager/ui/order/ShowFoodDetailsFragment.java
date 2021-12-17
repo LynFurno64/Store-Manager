@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.storemanager.NavActivity;
 import com.example.storemanager.R;
 import com.example.storemanager.database.Meal;
 import com.example.storemanager.database.MenuLab;
@@ -54,8 +56,10 @@ public class ShowFoodDetailsFragment extends Fragment {
         binding.mealTitle.setText(mMeal.getName());
         binding.mealPrice.setText("$"+ mMeal.getPrice());
 
+        ((NavActivity)getActivity()).setDrawer_lock();// Lock Drawer
         return binding.getRoot();
     }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -91,6 +95,7 @@ public class ShowFoodDetailsFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        ((NavActivity)getActivity()).setDrawer_unlock();// UnLock Drawer
         binding = null;
     }
 }
