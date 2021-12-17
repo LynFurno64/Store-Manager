@@ -7,6 +7,7 @@ import android.view.Menu;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -21,6 +22,7 @@ public class NavActivity extends AppCompatActivity implements MyDrawerControl {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityNavBinding binding;
     DrawerLayout drawer;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +30,6 @@ public class NavActivity extends AppCompatActivity implements MyDrawerControl {
 
         binding = ActivityNavBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        drawer = findViewById(R.id.drawer_layout);
 
         setSupportActionBar(binding.appBarNav.toolbar);
         binding.appBarNav.fab.setOnClickListener(new View.OnClickListener() {
@@ -39,13 +39,13 @@ public class NavActivity extends AppCompatActivity implements MyDrawerControl {
                         .setAction("Action", null).show();
             }
         });
-        DrawerLayout drawer = binding.drawerLayout;
+        drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_orders, R.id.nav_addFoods, R.id.nav_stats,R.id.nav_funds, R.id.nav_cart)
-                .setDrawerLayout(drawer)
+                .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_nav);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
@@ -70,11 +70,13 @@ public class NavActivity extends AppCompatActivity implements MyDrawerControl {
     public void setDrawer_lock() {
         // Lock Drawer
         drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+        binding.appBarNav.toolbar.setNavigationIcon(null);
     }
 
     @Override
     public void setDrawer_unlock() {
         // Unlock Drawer
         drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+        setSupportActionBar(binding.appBarNav.toolbar);
     }
 }

@@ -56,7 +56,7 @@ public class ShowFoodDetailsFragment extends Fragment {
         binding.mealTitle.setText(mMeal.getName());
         binding.mealPrice.setText("$"+ mMeal.getPrice());
 
-        ((NavActivity)getActivity()).setDrawer_lock();// Lock Drawer
+        ((NavActivity) getActivity()).setDrawer_lock();
         return binding.getRoot();
     }
 
