@@ -86,6 +86,8 @@ public class ShowFoodDetailsFragment extends Fragment {
         binding.addCartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mMeal.setTimesOrder(amount);
+
 
             }
         });

@@ -117,8 +117,6 @@ public class OrdersFragment extends Fragment {
         @Override
         public void onClick(View view) {
             String dish_name = mMeal.getName();
-
-            Log.i(TAG, "MyClass.getView() — get item number " + dish_name);
             Toast.makeText(getActivity(),
                     dish_name + " clicked!", Toast.LENGTH_SHORT).show();
 

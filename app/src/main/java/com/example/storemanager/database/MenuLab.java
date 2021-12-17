@@ -1,14 +1,18 @@
 package com.example.storemanager.database;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 
-import java.util.ArrayList;
+import com.example.storemanager.database.SQLDatabase.MealBaseHelper;
+
 import java.util.List;
 import java.util.UUID;
 
 public class MenuLab {
     private static MenuLab sMenuLab;
     private List<Meal> mMenu;
+    private Context mContext;
+    private SQLiteDatabase mDatabase;
 
     public static MenuLab get(Context context) {
         if (sMenuLab == null) {
@@ -18,13 +22,9 @@ public class MenuLab {
     }
 
     private MenuLab(Context context) {
-        mMenu = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            Meal dish = new Meal();
-            dish.setName("Meal #"+i);
-            dish.setPrice(1.75 + i);
-            mMenu.add(dish);
-        }
+        mContext = context.getApplicationContext();
+        mDatabase = new MealBaseHelper(mContext)
+                .getWritableDatabase();
     }
 
     public List<Meal> getMenu() {

@@ -5,18 +5,18 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
 
-public class MealDBHelper extends SQLiteOpenHelper {
+public class MealBaseHelper extends SQLiteOpenHelper {
     private static final int VERSION = 1;
-    private static final String DATABASE_NAME ="WebAndMobileProject.sqbpro";
+    private static final String DATABASE_NAME ="mealBase.db";
 
 
-    public MealDBHelper(Context context){
+    public MealBaseHelper(Context context){
         super(context,DATABASE_NAME,null,VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
+        db.execSQL("create table " + MealDbSchema.MealTable.NAME);
     }
 
     @Override
