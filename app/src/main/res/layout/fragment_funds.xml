@@ -12,11 +12,11 @@
 
         <TextView
             android:id="@+id/textView5"
-            android:textColor="#000000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="336dp"
+            android:layout_marginEnd="264dp"
             android:text="@string/spendings"
+            android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.138"
@@ -29,13 +29,12 @@
             android:id="@+id/editTextNumber"
             android:layout_width="159dp"
             android:layout_height="41dp"
-            android:layout_marginStart="144dp"
             android:ems="10"
             android:inputType="number"
             android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.684"
             app:layout_constraintStart_toEndOf="@+id/textView5"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,10 +46,10 @@
             android:textColor="#000000"
             app:layout_constraintBottom_toTopOf="@+id/textView5"
             app:layout_constraintEnd_toStartOf="@+id/editTextDate"
-            app:layout_constraintHorizontal_bias="0.14"
+            app:layout_constraintHorizontal_bias="0.522"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.787" />
+            app:layout_constraintVertical_bias="0.79" />
 
         <EditText
             android:id="@+id/editTextDate"
