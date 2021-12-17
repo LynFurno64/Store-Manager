@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.storemanager.R;
 import com.example.storemanager.database.Meal;
+import com.example.storemanager.database.MenuLab;
 import com.example.storemanager.databinding.FragmentAddMealBinding;
 import com.example.storemanager.databinding.FragmentOrderBinding;
 
@@ -43,9 +44,10 @@ public class AddMealFragment extends Fragment {
                     Toast.makeText(getActivity(),"Complete Forum",Toast.LENGTH_LONG).show();
                 }
                 else{
-                    Toast.makeText(getActivity(),"SAVED",Toast.LENGTH_LONG).show();
                     newMeal.setName(dish); // Meal Name
                     newMeal.setPrice(Double.parseDouble(price)); // Meal Price
+                    MenuLab.get(getActivity()).addMeal(newMeal);
+                    Toast.makeText(getActivity(),"SAVED " + newMeal.getPrice(),Toast.LENGTH_LONG).show();
                 }
             }
         });

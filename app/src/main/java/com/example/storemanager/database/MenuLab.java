@@ -2,9 +2,11 @@ package com.example.storemanager.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.storemanager.database.SQLDatabase.MealBaseHelper;
+import com.example.storemanager.database.SQLDatabase.MealCursorWrapper;
 import com.example.storemanager.database.SQLDatabase.MealDbSchema;
 
 import java.util.ArrayList;
@@ -35,6 +37,13 @@ public class MenuLab {
         mDatabase.insert(MealDbSchema.MealTable.NAME, null, values);
     }
 
+    public void deleteMeal(Meal m) {
+        String uuidString = m.getId().toString();
+        mDatabase.delete(MealDbSchema.MealTable.NAME,
+                MealDbSchema.MealTable.Cols.UUID + " = ?",
+                new String[]{uuidString});
+    }
+
     // Update Meals, Meanly for updating Times ordered
     public void updateCrime(Meal meal) {
         String uuidString = meal.getId().toString();
@@ -44,19 +53,51 @@ public class MenuLab {
                 new String[] { uuidString }); // String is not placed directly in the clause to prevent SQL Injection
     }
 
-    public List<Meal> getMenu() {
-        return new ArrayList<>();
+    private MealCursorWrapper queryMeals(String whereClause, String[] whereArgs) {
+        Cursor cursor = mDatabase.query(
+                MealDbSchema.MealTable.NAME,
+                null, // columns - null selects all columns
+                whereClause,
+                whereArgs,
+                null, // groupBy
+                null, // having
+                null // orderBy
+        );
+        return new MealCursorWrapper(cursor);
     }
 
-    public Meal getMeals(UUID id) {
-        /**
-        for (Meal food : mMenu) {
-            if (food.getId().equals(id)) {
-                return food;
+    public List<Meal> getMenu() {
+        List<Meal> meals = new ArrayList<>();
+        MealCursorWrapper cursor = queryMeals(null, null);
+        try {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                meals.add(cursor.getMeal());
+                cursor.moveToNext();
             }
-        }**/
-        return null;
+        } finally {
+            cursor.close();
+        }
+        return meals;
     }
+
+    //getMeal(UUID) will look similar to getMenu(), except it will only need to pull the first
+    //item, if it is there.
+    public Meal getMeal(UUID id) {
+        MealCursorWrapper cursor = queryMeals(
+                MealDbSchema.MealTable.Cols.UUID + " = ?",
+                new String[] { id.toString() }
+        );
+        try {
+            if (cursor.getCount() == 0) {
+                return null;
+            }
+            cursor.moveToFirst();
+            return cursor.getMeal();
+        } finally {
+            cursor.close();
+        }
+    }// getMeals
 
     private static ContentValues getContentValues(Meal meal) {
         ContentValues values = new ContentValues();

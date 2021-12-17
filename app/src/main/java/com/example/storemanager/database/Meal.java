@@ -9,7 +9,11 @@ public class Meal {
     public int timesOrder;
 
     public Meal() {
-        id = UUID.randomUUID();
+        this(UUID.randomUUID());
+    }
+
+    public Meal(UUID code) {
+        id = code;
         timesOrder = 0;
     }
 

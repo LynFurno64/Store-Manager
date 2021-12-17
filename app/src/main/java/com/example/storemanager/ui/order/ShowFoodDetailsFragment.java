@@ -4,22 +4,15 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.example.storemanager.NavActivity;
-import com.example.storemanager.R;
 import com.example.storemanager.database.Meal;
 import com.example.storemanager.database.MenuLab;
-import com.example.storemanager.databinding.FragmentOrderBinding;
 import com.example.storemanager.databinding.FragmentShowFoodDetailsBinding;
 
 import java.util.UUID;
@@ -51,7 +44,7 @@ public class ShowFoodDetailsFragment extends Fragment {
         Bundle bundle = this.getArguments();
         if(bundle != null){
             UUID dishId = UUID.fromString((String) bundle.get("meal_ID"));
-            mMeal = MenuLab.get(getActivity()).getMeals(dishId);
+            mMeal = MenuLab.get(getActivity()).getMeal(dishId);
         }
         binding.mealTitle.setText(mMeal.getName());
         binding.mealPrice.setText("$"+ mMeal.getPrice());
@@ -87,7 +80,6 @@ public class ShowFoodDetailsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 mMeal.setTimesOrder(amount);
-
 
             }
         });

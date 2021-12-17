@@ -62,6 +62,7 @@ public class OrdersFragment extends Fragment {
             mAdapter = new DishAdapter(dishes);
             mMenuRecyclerView.setAdapter(mAdapter);
         } else {
+            mAdapter.setMenu(dishes);
             mAdapter.notifyDataSetChanged();
         }
     }// updateUI
@@ -149,6 +150,10 @@ public class OrdersFragment extends Fragment {
         @Override
         public int getItemCount() {
             return mMenu.size();
+        }
+
+        public void setMenu(List<Meal> meals){
+            mMenu = meals;
         }
 
     }// MealAdapter
