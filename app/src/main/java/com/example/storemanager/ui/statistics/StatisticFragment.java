@@ -14,15 +14,27 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.example.storemanager.R;
+import com.example.storemanager.database.Statistics;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class StatisticFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
-
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        UUID id = (UUID) getArguments().getSerializable();
+        Statisticlab statistic = Statisticlab.get(getActivity()).getStatistic(id);
+
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        Statistics statistic = new Statistics();
+        Statisticlab.get(getActivity()).updateStat(statistic);
     }
 
     @Override
