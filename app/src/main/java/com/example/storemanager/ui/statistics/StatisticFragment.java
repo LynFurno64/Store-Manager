@@ -14,16 +14,11 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.example.storemanager.R;
-import com.example.storemanager.database.Meal;
-import com.example.storemanager.database.MonthlyBussinessReview;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class StatisticFragment extends Fragment implements AdapterView.OnItemSelectedListener {
-
-    MonthlyBussinessReview monthlyBussinessReview = new MonthlyBussinessReview();
-    Meal meal = new Meal();
 
 
     public void onCreate(Bundle savedInstanceState) {
@@ -71,8 +66,6 @@ public class StatisticFragment extends Fragment implements AdapterView.OnItemSel
 
         // Will display the profits when click
         button.setOnClickListener(v -> {
-                double profits =  monthlyBussinessReview.getTotalEarned();
-                textView.setText((int) profits);
 
         });
 

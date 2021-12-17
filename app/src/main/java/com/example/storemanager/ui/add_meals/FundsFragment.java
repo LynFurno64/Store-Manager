@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.storemanager.R;
 
@@ -24,6 +26,16 @@ public class FundsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
        View view = inflater.inflate(R.layout.fragment_funds, container, false);
+
+        Button button = view.findViewById(R.id.button2);
+        TextView view1 = view.findViewById(R.id.editTextNumber);
+        TextView view2 = view.findViewById(R.id.editTextTextPersonName);
+
+
+        button.setOnClickListener(v -> {
+
+
+        });
 
        return view;
     }
