@@ -52,20 +52,6 @@ public class OrdersFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Open Menu List
-        binding.menuButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Fragment menuListFrg = new MenuListFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment_content_nav, menuListFrg);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
-        });
-
     }
 
     private void updateUI() {
@@ -86,6 +72,7 @@ public class OrdersFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
 
     @Override
     public void onResume() {

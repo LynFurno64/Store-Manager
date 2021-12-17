@@ -10,6 +10,7 @@ public class Meal {
 
     public Meal() {
         id = UUID.randomUUID();
+        timesOrder = 0;
     }
 
     public UUID getId() {

@@ -3,7 +3,8 @@ package com.example.storemanager.database.SQLDatabase;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.os.Build;
+
+import com.example.storemanager.database.SQLDatabase.MealDbSchema.MealTable;
 
 public class MealBaseHelper extends SQLiteOpenHelper {
     private static final int VERSION = 1;
@@ -16,7 +17,14 @@ public class MealBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + MealDbSchema.MealTable.NAME);
+        db.execSQL("create table " + MealTable.NAME + "(" +
+                        " _id integer primary key autoincrement, " +
+                MealTable.Cols.UUID + ", " +
+                MealTable.Cols.MealName + ", " +
+                MealTable.Cols.MealCost + ", " +
+                MealTable.Cols.TimesOrder +
+                ")"
+        );
     }
 
     @Override

@@ -93,6 +93,12 @@ public class ShowFoodDetailsFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        MenuLab.get(getActivity()).updateCrime(mMeal);
+    }
+
     // To prevent memory leak
     @Override
     public void onDestroyView() {
