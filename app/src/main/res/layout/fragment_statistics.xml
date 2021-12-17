@@ -30,7 +30,6 @@
             android:layout_height="48dp"
             android:layout_marginBottom="376dp"
             android:autofillHints=""
-            android:clickable="false"
             android:ems="10"
             android:hint="@string/profits"
             android:inputType="number"

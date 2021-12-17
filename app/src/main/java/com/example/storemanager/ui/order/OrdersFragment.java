@@ -18,8 +18,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.storemanager.NavActivity;
 import com.example.storemanager.R;
+import com.example.storemanager.database.Dish;
 import com.example.storemanager.database.Meal;
 import com.example.storemanager.database.MenuLab;
+import com.example.storemanager.database.MonthlyBussinessReview;
 import com.example.storemanager.databinding.FragmentOrderBinding;
 
 import java.util.List;
@@ -163,7 +165,5 @@ public class OrdersFragment extends Fragment {
         }
 
     }// MealAdapter
-
-
 
 }
