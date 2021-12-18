@@ -4,13 +4,13 @@ import com.example.storemanager.Helpers.TotalSpent;
 import com.example.storemanager.database.Dish;
 
 public class MonthlyBussinessReview  {
-    public Dish earned;
-    public TotalSpent spent;
+    public double earned;
+    public double spent;
     public double totalEarned;
     public double totalLoss;
 
 
-    public MonthlyBussinessReview(Dish earned,TotalSpent spent, double totalEarned,double totalLoss){
+    public MonthlyBussinessReview(double earned,double spent, double totalEarned,double totalLoss){
         this.earned = earned;
         this.spent = spent;
         this.totalEarned =  totalEarned;
@@ -46,7 +46,7 @@ public class MonthlyBussinessReview  {
 
         return null;
     }
-    public Dish getEarned() {
+    public double getEarned() {
         return earned;
     }
 

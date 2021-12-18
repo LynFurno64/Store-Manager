@@ -2,6 +2,8 @@ package com.example.storemanager.ui.checkout;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,6 +20,7 @@ import com.example.storemanager.Helpers.OrderManager;
 import com.example.storemanager.R;
 import com.example.storemanager.database.CartFood;
 import com.example.storemanager.databinding.FragmentCheckoutBinding;
+import com.example.storemanager.ui.order.OrdersFragment;
 
 import java.util.List;
 
@@ -26,7 +29,9 @@ public class CheckoutFragment extends Fragment {
     FragmentCheckoutBinding binding;
     private RecyclerView mCartRecyclerView;
     private CartAdapter mAdapter;
-    private double total= 0.0;
+    private OrderManager orderManager = OrderManager.get(getActivity());
+    private int grandTotal = (int) orderManager.getTotalCartPrice(orderManager.getCartItems());
+    private String cartTotal = "$" + grandTotal;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,14 +47,31 @@ public class CheckoutFragment extends Fragment {
         mCartRecyclerView = binding.rvCartList.findViewById(R.id.rv_cart_list);
         mCartRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         updateUI();
+        binding.tvTotal.setText(cartTotal);
         return binding.getRoot();
+    }
+
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        binding.checkOutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     private void updateUI() {
         OrderManager orderManager = OrderManager.get(getActivity());
         List<CartFood> items = orderManager.getCartItems();
-        mAdapter = new CartAdapter(items);
-        mCartRecyclerView.setAdapter(mAdapter);
+
+        if (mAdapter == null) {
+            mAdapter = new CartAdapter(items);
+            mCartRecyclerView.setAdapter(mAdapter);
+        } else {
+            mAdapter.notifyDataSetChanged();
+        }
     }// updateUI
 
     @Override
@@ -64,6 +86,7 @@ public class CheckoutFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        orderManager.setTotalCartPrice(0.00);
         binding = null;
     }
 
@@ -87,8 +110,6 @@ public class CheckoutFragment extends Fragment {
         private TextView mTextViewTitle;
         private TextView mTextViewPrice;
         private TextView mTextViewAmount;
-        private TextView mTotalView;
-
 
         public CartHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.cardview_checkout, parent, false));
@@ -96,17 +117,16 @@ public class CheckoutFragment extends Fragment {
             mTextViewTitle = itemView.findViewById(R.id.cart_meal_title);
             mTextViewAmount = itemView.findViewById(R.id.cart_amount);
             mTextViewPrice = itemView.findViewById(R.id.cart_meal_price);
-            mTotalView = itemView.findViewById(R.id.tv_total);
         }
 
         public void bind(CartFood items){
             mCart = items;
             mTextViewTitle.setText(mCart.getCart_name());
             mTextViewAmount.setText(String.valueOf(mCart.getCart_amount()));
-            mTextViewPrice.setText(String.valueOf(mCart.getCart_price()));
+            mTextViewPrice.setText(String.valueOf(mCart.getTotal()));
 
-            mTotalView.setText("$"+total);
         }// bind
+
 
         @Override
         public void onClick(View view) {
@@ -145,6 +165,7 @@ public class CheckoutFragment extends Fragment {
         public void setMenu(List<CartFood> items){
             mCart = items;
         }
+
 
     }// MealAdapter
 }
