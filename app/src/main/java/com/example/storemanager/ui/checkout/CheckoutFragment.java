@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.storemanager.Helpers.MonthlyBussinessReview;
 import com.example.storemanager.Helpers.OrderManager;
 import com.example.storemanager.R;
 import com.example.storemanager.database.CartFood;
@@ -54,9 +55,15 @@ public class CheckoutFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Saves total cart money and clear screen
         binding.checkOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MonthlyBussinessReview saveTotal = new MonthlyBussinessReview();
+                saveTotal.setTotalEarned(grandTotal);
+                orderManager.destroy();
+                binding.tvTotal.setText("$0");
+                mCartRecyclerView.setAdapter(null);
 
             }
         });
@@ -86,7 +93,6 @@ public class CheckoutFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        orderManager.setTotalCartPrice(0.00); // Set Cart total to 0.00
         binding = null;
     }
 
@@ -105,7 +111,7 @@ public class CheckoutFragment extends Fragment {
 
     //---------------stores and recycles views as they are scrolled off screen--------------------\\
     //--------------------------------------------------------------------------------------------\\
-    private class CartHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    private class CartHolder extends RecyclerView.ViewHolder {
         private CartFood mCart;
         private TextView mTextViewTitle;
         private TextView mTextViewPrice;
@@ -113,7 +119,6 @@ public class CheckoutFragment extends Fragment {
 
         public CartHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.cardview_checkout, parent, false));
-            itemView.setOnClickListener(this);
             mTextViewTitle = itemView.findViewById(R.id.cart_meal_title);
             mTextViewAmount = itemView.findViewById(R.id.cart_amount);
             mTextViewPrice = itemView.findViewById(R.id.cart_meal_price);
@@ -126,12 +131,6 @@ public class CheckoutFragment extends Fragment {
             mTextViewPrice.setText(String.valueOf(mCart.getTotal()));
 
         }// bind
-
-
-        @Override
-        public void onClick(View view) {
-
-        }
     }// MealsHolder
 
     //--------------------------------------------------------------------------------------------\\
@@ -156,16 +155,12 @@ public class CheckoutFragment extends Fragment {
             CartFood cart = mCart.get(position);
             holder.bind(cart);
         }
-
         @Override
         public int getItemCount() {
             return mCart.size();
         }
-
         public void setMenu(List<CartFood> items){
             mCart = items;
         }
-
-
     }// MealAdapter
 }

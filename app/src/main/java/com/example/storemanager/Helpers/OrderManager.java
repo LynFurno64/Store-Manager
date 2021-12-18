@@ -36,21 +36,18 @@ public class OrderManager {
         return totalMealPrice;
     }// calculateTotalMealPrice
 
+    public void destroy(){
+        mCart.clear();
+    }
+
     public double getTotalCartPrice(List<CartFood> c) {
+        double fee = 0.00;
         for (CartFood food : c) {
-            totalMealPrice += food.getTotal();
+            fee += food.getTotal();
         }
-        return Double.parseDouble(df.format(totalMealPrice));
+        return Double.parseDouble(df.format(fee));
     }// calculateTotalMealPrice
 
-    public double getTotalCartPrice() {
-        List<CartFood> listFood = getCartItems();
-        double fee = 0.00;
-        for (int i =0; i < listFood.size(); i++){
-            fee += (listFood.get(i).getTotal());
-        }
-        return fee;
-    }// calculateTotalMealPrice
 
     public void insertFood(CartFood item) {
         mCart.add(item);
