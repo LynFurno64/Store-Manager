@@ -1,6 +1,6 @@
 package com.example.storemanager.Helpers;
 
-public class TotalSpent implements calculate {
+public class TotalSpent{
     public double spentToday;
     public double spendSoFar;
 
@@ -20,7 +20,6 @@ public class TotalSpent implements calculate {
         this.spendSoFar = spendSoFar;
     }
 
-    @Override
     public double calculateOverallTotal(double num) {
         spendSoFar += num;
         return spendSoFar;

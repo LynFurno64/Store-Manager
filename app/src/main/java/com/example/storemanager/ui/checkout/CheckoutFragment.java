@@ -26,7 +26,7 @@ public class CheckoutFragment extends Fragment {
     FragmentCheckoutBinding binding;
     private RecyclerView mCartRecyclerView;
     private CartAdapter mAdapter;
-    private double total;
+    private double total= 0.0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,24 +42,14 @@ public class CheckoutFragment extends Fragment {
         mCartRecyclerView = binding.rvCartList.findViewById(R.id.rv_cart_list);
         mCartRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         updateUI();
-
-        // Inflate the layout for this fragment
         return binding.getRoot();
     }
 
     private void updateUI() {
         OrderManager orderManager = OrderManager.get(getActivity());
         List<CartFood> items = orderManager.getCartItems();
-
         mAdapter = new CartAdapter(items);
         mCartRecyclerView.setAdapter(mAdapter);
-        /**
-        if (mAdapter == null) {
-            mAdapter = new CartAdapter(items);
-            mCartRecyclerView.setAdapter(mAdapter);
-        } else {
-            mAdapter.notifyDataSetChanged();
-        }**/
     }// updateUI
 
     @Override
@@ -97,6 +87,7 @@ public class CheckoutFragment extends Fragment {
         private TextView mTextViewTitle;
         private TextView mTextViewPrice;
         private TextView mTextViewAmount;
+        private TextView mTotalView;
 
 
         public CartHolder(LayoutInflater inflater, ViewGroup parent) {
@@ -105,6 +96,7 @@ public class CheckoutFragment extends Fragment {
             mTextViewTitle = itemView.findViewById(R.id.cart_meal_title);
             mTextViewAmount = itemView.findViewById(R.id.cart_amount);
             mTextViewPrice = itemView.findViewById(R.id.cart_meal_price);
+            mTotalView = itemView.findViewById(R.id.tv_total);
         }
 
         public void bind(CartFood items){
@@ -112,6 +104,8 @@ public class CheckoutFragment extends Fragment {
             mTextViewTitle.setText(mCart.getCart_name());
             mTextViewAmount.setText(String.valueOf(mCart.getCart_amount()));
             mTextViewPrice.setText(String.valueOf(mCart.getCart_price()));
+
+            mTotalView.setText("$"+total);
         }// bind
 
         @Override
