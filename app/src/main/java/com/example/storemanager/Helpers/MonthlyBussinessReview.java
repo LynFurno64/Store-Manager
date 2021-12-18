@@ -1,4 +1,7 @@
-package com.example.storemanager.database;
+package com.example.storemanager.Helpers;
+
+import com.example.storemanager.Helpers.TotalSpent;
+import com.example.storemanager.database.Dish;
 
 public class MonthlyBussinessReview  {
     public Dish earned;

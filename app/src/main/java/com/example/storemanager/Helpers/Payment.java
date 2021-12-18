@@ -1,4 +1,4 @@
-package com.example.storemanager.database;
+package com.example.storemanager.Helpers;
 
 public class Payment {
     public Order order;

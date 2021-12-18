@@ -1,8 +1,11 @@
-package com.example.storemanager.database;
+package com.example.storemanager.Helpers;
 
-public class Order implements calculate{
+
+
+import com.example.storemanager.database.calculate;
+
+public class Order implements calculate {
     public double totalMealPrice = 0.0;
-
     @Override
     public double calculateOverallTotal(double num) {
         totalMealPrice += num;
