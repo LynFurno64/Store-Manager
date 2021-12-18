@@ -1,7 +1,5 @@
 package com.example.storemanager.Helpers;
 
-import com.example.storemanager.database.calculate;
-
 public class TotalSpent implements calculate {
     public double spentToday;
     public double spendSoFar;

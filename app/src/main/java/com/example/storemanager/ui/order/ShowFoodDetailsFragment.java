@@ -7,9 +7,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Lifecycle;
 
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -19,8 +16,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.storemanager.Helpers.OrderManager;
 import com.example.storemanager.NavActivity;
 import com.example.storemanager.R;
+import com.example.storemanager.database.CartFood;
 import com.example.storemanager.database.Meal;
 import com.example.storemanager.database.MenuLab;
 import com.example.storemanager.databinding.FragmentShowFoodDetailsBinding;
@@ -31,6 +30,7 @@ public class ShowFoodDetailsFragment extends Fragment {
     private static final String ARG_MEAL_ID = "meal_id";
 
     private Meal mMeal;
+    public CartFood mCart;
     private int amount;
     private int totalBrought;
     FragmentShowFoodDetailsBinding binding;
@@ -70,7 +70,6 @@ public class ShowFoodDetailsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         // add another instance
         binding.plusBtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -90,10 +89,14 @@ public class ShowFoodDetailsFragment extends Fragment {
         });
 
         binding.addCartBtn.setOnClickListener(new View.OnClickListener() {
+            OrderManager orderManager = OrderManager.get(getActivity());
             @Override
             public void onClick(View view) {
                 totalBrought += amount;
                 mMeal.setTimesOrder(totalBrought);
+                //Set cart
+                mCart = new CartFood(mMeal.name, mMeal.price, amount);
+                orderManager.insertFood(mCart);
                 Toast.makeText(getActivity(),"Total sold: " + mMeal.getTimesOrder(),Toast.LENGTH_LONG).show();
             }
         });

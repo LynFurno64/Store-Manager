@@ -1,7 +1,7 @@
 package com.example.storemanager.Helpers;
 
 public class Payment {
-    public Order order;
+    public OrderManager order;
     public double paid;
     public double foodPrice;
 
