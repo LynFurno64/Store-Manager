@@ -9,8 +9,11 @@ public class Statistics {
     public double profits;
 
     public Statistics(){
-        id = UUID.randomUUID();
-        profits = 0;
+        this(UUID.randomUUID());
+    }
+    public Statistics(UUID code){
+        id = code;
+        profits =0;
     }
 
     public UUID getId() {

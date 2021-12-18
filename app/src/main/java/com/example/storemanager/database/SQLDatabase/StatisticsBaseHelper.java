@@ -8,7 +8,7 @@ import com.example.storemanager.database.SQLDatabase.StatisticsDbSchema.Statisti
 
 public class StatisticsBaseHelper extends SQLiteOpenHelper {
     private static final int VERSION = 1;
-    private static final String DATABASE_NAME = "statsBase.db";
+    private static final String DATABASE_NAME = "WebandMobileProject.db";
 
     public StatisticsBaseHelper(Context context){
         super(context,DATABASE_NAME,null,VERSION);
@@ -16,13 +16,11 @@ public class StatisticsBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + StatisticsTable.Name + "(" +
-                " _id integer primary key autoincrement, " +
-                StatisticsTable.Cols.UUID + ", " +
-                StatisticsTable.Cols.TotalEarn + ", " +
-                StatisticsTable.Cols.TotalSpent + ", " +
-                StatisticsTable.Cols.Profits +
-                ")"
+        db.execSQL("create table"+ StatisticsTable.Name +"(" + "_id integer primary key" +
+                "autoincrement,"+ StatisticsTable.Cols.UUID+","+
+                StatisticsTable.Cols.TotalEarn+","+
+                StatisticsTable.Cols.TotalSpent+","+
+                StatisticsTable.Cols.Profits+")"
         );
     }
 
