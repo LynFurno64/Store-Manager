@@ -26,13 +26,12 @@ public class StatisticFragment extends Fragment implements AdapterView.OnItemSel
 
     private Statistics mStatistics;
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        UUID id = (UUID) getArguments().getSerializable(ARG_STAT_ID);
-        mStatistics = Statisticlab.get(getActivity()).getStatistic(id);
+        //** this block of code is causing a crash**//
+        //UUID id = (UUID) getArguments().getSerializable(ARG_STAT_ID);
+        //mStatistics = Statisticlab.get(getActivity()).getStatistic(id);
     }
 
     @Override
@@ -79,7 +78,6 @@ public class StatisticFragment extends Fragment implements AdapterView.OnItemSel
         Button button = view.findViewById(R.id.button);
         TextView textView = view.findViewById(R.id.TextNumber);
 
-
         // Will display the profits when click
         button.setOnClickListener(v -> {
 
@@ -99,8 +97,6 @@ public class StatisticFragment extends Fragment implements AdapterView.OnItemSel
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub
     }
-    public void setStat(List<Statistics> statistics){
-        mStatistics = (Statistics) statistics;
-    }
+
 
 }
