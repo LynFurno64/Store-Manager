@@ -72,4 +72,12 @@ public class MonthlyBussinessReview  {
     public double getTotalEarned() {
         return totalEarned;
     }
+
+    public double getSpent() {
+        return spent;
+    }
+
+    public void setSpent(double spent) {
+        this.spent = spent;
+    }
 }

@@ -10,11 +10,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.storemanager.Helpers.MonthlyBussinessReview;
 import com.example.storemanager.R;
 
 
 public class FundsFragment extends Fragment {
-
+    MonthlyBussinessReview monthlyBussinessReview = new MonthlyBussinessReview();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,10 +32,10 @@ public class FundsFragment extends Fragment {
         TextView view1 = view.findViewById(R.id.editTextNumber);
         TextView view2 = view.findViewById(R.id.editTextTextPersonName);
 
+        double x  = Integer.parseInt((String) view2.getText());
 
         button.setOnClickListener(v -> {
-
-
+          // monthlyBussinessReview.setSpent(x);
         });
 
        return view;

@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.storemanager.Helpers.MonthlyBussinessReview;
 import com.example.storemanager.R;
 import com.example.storemanager.database.Statisticlab;
 import com.example.storemanager.database.Statistics;
@@ -24,9 +25,10 @@ import java.util.UUID;
 
 public class StatisticFragment extends Fragment implements AdapterView.OnItemSelectedListener {
     private static final String ARG_STAT_ID = "STAT_ID";
+    MonthlyBussinessReview monthlyBussinessReview = new MonthlyBussinessReview();
 
     private Statistics mStatistics;
-    private double Total;
+    double calculate;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -80,11 +82,14 @@ public class StatisticFragment extends Fragment implements AdapterView.OnItemSel
 
         Button button = view.findViewById(R.id.button);
         TextView textView = view.findViewById(R.id.TextNumber);
+       // double  x = monthlyBussinessReview.getTotalEarned();
+        //double y = monthlyBussinessReview.getSpent();
+        //calculate = x - y ;
 
         // Will display the profits when click
         button.setOnClickListener(v -> {
-           Total =  mStatistics.getProfits();
-            textView.setText("$"+Total);
+            //textView.setText((int) calculate);
+
         });
 
         return view;
