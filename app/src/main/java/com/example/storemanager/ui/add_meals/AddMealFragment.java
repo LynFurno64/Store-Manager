@@ -47,12 +47,10 @@ public class AddMealFragment extends Fragment {
                     newMeal.setName(dish); // Meal Name
                     newMeal.setPrice(Double.parseDouble(price)); // Meal Price
                     MenuLab.get(getActivity()).addMeal(newMeal);
-                    Toast.makeText(getActivity(),"SAVED " + newMeal.getPrice(),Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(),"SAVED ",Toast.LENGTH_LONG).show();
                 }
             }
         });
         return binding.getRoot();
     }
-
-
 }

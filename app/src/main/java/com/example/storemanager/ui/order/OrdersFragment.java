@@ -74,6 +74,11 @@ public class OrdersFragment extends Fragment {
         binding = null;
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        ((NavActivity) getActivity()).setDrawer_unlock();// UnLock Drawer
+    }
 
     @Override
     public void onResume() {
