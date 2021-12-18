@@ -94,7 +94,7 @@ public class OrdersFragment extends Fragment {
             mTextViewPrice = itemView.findViewById(R.id.tv_meal_price);
         }
 
-        //This will be called each time a new Meal is displayed in your CrimeHolder
+        //This will be called each time a new Meal is displayed in your Meal
         //When given a Meal, MealHolder will now update the title TextView and price TextView to reflect the
         //state of the Meal.
         public void bind(Meal meal){
