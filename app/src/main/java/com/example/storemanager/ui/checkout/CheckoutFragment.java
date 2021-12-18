@@ -86,7 +86,7 @@ public class CheckoutFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        orderManager.setTotalCartPrice(0.00);
+        orderManager.setTotalCartPrice(0.00); // Set Cart total to 0.00
         binding = null;
     }
 
