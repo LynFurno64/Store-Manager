@@ -1,5 +1,6 @@
 package com.example.storemanager.ui.statistics;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +26,7 @@ public class StatisticFragment extends Fragment implements AdapterView.OnItemSel
     private static final String ARG_STAT_ID = "STAT_ID";
 
     private Statistics mStatistics;
+    private double Total;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class StatisticFragment extends Fragment implements AdapterView.OnItemSel
         Statisticlab.get(getActivity()).updateStat(mStatistics);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -80,7 +83,8 @@ public class StatisticFragment extends Fragment implements AdapterView.OnItemSel
 
         // Will display the profits when click
         button.setOnClickListener(v -> {
-
+           Total =  mStatistics.getProfits();
+            textView.setText("$"+Total);
         });
 
         return view;

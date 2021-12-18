@@ -107,7 +107,7 @@ public class ShowFoodDetailsFragment extends Fragment {
             case R.id.delete_meal:
                 AlertDialog.Builder delete = new AlertDialog.Builder(getContext());
                 delete.setTitle(R.string.app_name);
-                delete.setMessage("Do you want to delete the crime?");
+                delete.setMessage("Do you want to delete the meal?");
                 delete.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
