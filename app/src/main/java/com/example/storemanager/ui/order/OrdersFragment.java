@@ -1,5 +1,7 @@
 package com.example.storemanager.ui.order;
 
+import android.annotation.SuppressLint;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -54,7 +56,8 @@ public class OrdersFragment extends Fragment {
 
     }
 
-    private void updateUI() {
+    @SuppressLint("NotifyDataSetChanged")
+    protected void updateUI() {
         MenuLab menuLab = MenuLab.get(getActivity());
         List<Meal> dishes = menuLab.getMenu();
 
@@ -78,6 +81,7 @@ public class OrdersFragment extends Fragment {
     public void onPause() {
         super.onPause();
         ((NavActivity) getActivity()).setDrawer_unlock();// UnLock Drawer
+        updateUI();
     }
 
     @Override

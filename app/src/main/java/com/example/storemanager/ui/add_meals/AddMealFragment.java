@@ -25,7 +25,6 @@ public class AddMealFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        newMeal = new Meal();
     }
 
     @Override
@@ -38,6 +37,7 @@ public class AddMealFragment extends Fragment {
         binding.sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                newMeal = new Meal();
                 dish = String.valueOf(binding.dishName.getText());
                 price = String.valueOf(binding.price.getText());
                 if (dish.isEmpty() || price.isEmpty()){
@@ -48,6 +48,8 @@ public class AddMealFragment extends Fragment {
                     newMeal.setPrice(Double.parseDouble(price)); // Meal Price
                     MenuLab.get(getActivity()).addMeal(newMeal);
                     Toast.makeText(getActivity(),"SAVED ",Toast.LENGTH_LONG).show();
+                    binding.dishName.setText("");
+                    binding.price.setText("");
                 }
             }
         });
