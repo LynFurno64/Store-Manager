@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.example.storemanager.R;
+import com.example.storemanager.database.Statisticlab;
 import com.example.storemanager.database.Statistics;
 
 import java.util.ArrayList;
@@ -23,13 +24,15 @@ import java.util.UUID;
 public class StatisticFragment extends Fragment implements AdapterView.OnItemSelectedListener {
     private static final String ARG_STAT_ID = "STAT_ID";
 
+    private Statistics mStatistics;
+
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         UUID id = (UUID) getArguments().getSerializable(ARG_STAT_ID);
-        mStatistic = Statisticlab.get(getActivity()).getStatistic(id);
+        mStatistics = Statisticlab.get(getActivity()).getStatistic(id);
     }
 
     @Override
@@ -96,12 +99,8 @@ public class StatisticFragment extends Fragment implements AdapterView.OnItemSel
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub
     }
-    public void setStat(List<Statisticlab> statistics){
-        mStatistics = statistics;
+    public void setStat(List<Statistics> statistics){
+        mStatistics = (Statistics) statistics;
     }
-    public void updateUI(){
-        Statisticlab statisticlab = Statisticlab.get(getActivity());
-        List<Statisticlab> statistics =Statisticlab.getStat();
 
-    }
 }

@@ -16,8 +16,7 @@ public class StatisticsBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table"+ StatisticsTable.Name +"(" + "_id integer primary key" +
-                "autoincrement,"+ StatisticsTable.Cols.UUID+","+
+        db.execSQL("create table"+ StatisticsTable.Name +"(" + "_id integer primary key autoincrement,"+ StatisticsTable.Cols.UUID+","+
                 StatisticsTable.Cols.TotalEarn+","+
                 StatisticsTable.Cols.TotalSpent+","+
                 StatisticsTable.Cols.Profits+")"

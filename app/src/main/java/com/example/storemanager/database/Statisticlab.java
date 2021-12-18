@@ -1,4 +1,4 @@
-package com.example.storemanager.ui.statistics;
+package com.example.storemanager.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.storemanager.database.SQLDatabase.StatisticCursorWrapper;
 import com.example.storemanager.database.SQLDatabase.StatisticsBaseHelper;
 import com.example.storemanager.database.SQLDatabase.StatisticsDbSchema;
-import com.example.storemanager.database.Statistics;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,34 +16,35 @@ import java.util.UUID;
 
 public class Statisticlab {
     private static Statisticlab statistic;
-
-
-    private Context context;
+    private Context mContext;
     private SQLiteDatabase database;
 
     public static Statisticlab get(Context context){
+       if (statistic ==null){
+           statistic = new Statisticlab(context);
+       }
+       return statistic;
     }
 
 
     private Statisticlab(Context context){
-        context = context.getApplicationContext();
-        database = new StatisticsBaseHelper(context).getWritableDatabase();
+        mContext = context.getApplicationContext();
+        database = new StatisticsBaseHelper(mContext).getWritableDatabase();
 
     }
     public List<Statistics> getStat(){
-        List<Statistics> statistics = new ArrayList<>();
-
+        List<Statistics> stat = new ArrayList<>();
         StatisticCursorWrapper cursorWrapper = queryStat(null,null);
         try {
             cursorWrapper.moveToFirst();
             while (!cursorWrapper.isAfterLast()){
-                statistics.add(cursorWrapper.getStat());
+                stat.add(cursorWrapper.getStat());
                 cursorWrapper.moveToNext();
             }
         }finally {
             cursorWrapper.close();
         }
-        return statistics;
+        return stat;
     }
     public void AddStat(Statistics s){
         ContentValues values = getContentValues(s);
@@ -51,8 +52,9 @@ public class Statisticlab {
     }
 
 
-    public Statisticlab getStatistic(UUID id){
-        StatisticCursorWrapper cursorWrapper = queryStat(StatisticsDbSchema.StatisticsTable.Cols.UUID+" =?",
+    public Statistics getStatistic(UUID id){
+        StatisticCursorWrapper cursorWrapper = queryStat(
+                StatisticsDbSchema.StatisticsTable.Cols.UUID+" =?",
                 new String[]{id.toString()});
         try {
             if (cursorWrapper.getCount() == 0){
@@ -73,8 +75,12 @@ public class Statisticlab {
     }
     private StatisticCursorWrapper queryStat(String whereClause, String[] whereArgs){
         Cursor cursor = database.query(StatisticsDbSchema.StatisticsTable.Name,null
-        ,//columns - null selects all columes
-                whereClause,whereArgs,null,//groupBy null,//having null //orderBy);
+        ,//columns - null selects all columns
+                whereClause,
+                whereArgs,
+                null,//groupBy
+                null,//having
+                null //orderBy
         );
         return new StatisticCursorWrapper(cursor);
     }
